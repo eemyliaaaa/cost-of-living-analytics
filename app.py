@@ -11,22 +11,25 @@ import plotly.express as px
 
 st.set_page_config(
     page_title="Cost of Living Analytics",
-    page_icon="📊",
+    page_icon="🌿",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
 # =====================================================
-# 2. COLOUR THEME
+# 2. EMERALD & GOLD COLOUR THEME
 # =====================================================
 
-MAROON = "#702F3B"
-DARK_MAROON = "#49252E"
-OLIVE = "#78834B"
-CREAM = "#F4F0E8"
-CHARCOAL = "#30302E"
-MUTED = "#B8AA9A"
+DARK_GREEN = "#064E3B"
+EMERALD = "#059669"
+LIME = "#84CC16"
+GOLD = "#FBBF24"
+CREAM = "#F0FDF4"
+CHARCOAL = "#18352B"
+MUTED = "#A7B9A8"
 WHITE = "#FFFFFF"
+LIGHT_GREEN = "#DCFCE7"
+DARK_GOLD = "#B7791F"
 
 # =====================================================
 # 3. CUSTOM CSS
@@ -38,8 +41,8 @@ st.markdown("""
 /* MAIN BACKGROUND */
 
 .stApp {
-    background-color: #F4F0E8;
-    color: #30302E;
+    background-color: #F0FDF4;
+    color: #18352B;
 }
 
 .block-container {
@@ -53,7 +56,7 @@ st.markdown("""
 /* HEADINGS */
 
 h1, h2, h3 {
-    color: #49252E !important;
+    color: #064E3B !important;
 }
 
 h1 {
@@ -68,25 +71,29 @@ h3 {
     font-size: 18px !important;
 }
 
-/* HEADER */
+/* BRAND HEADER */
 
 .brand-header {
-    background: linear-gradient(110deg, #49252E, #702F3B);
-    padding: 15px 24px;
+    background: linear-gradient(
+        110deg,
+        #064E3B,
+        #059669
+    );
+    padding: 17px 24px;
     border-radius: 12px;
     margin-bottom: 5px;
-    box-shadow: 0 3px 10px rgba(73,37,46,0.12);
+    box-shadow: 0 4px 12px rgba(6,78,59,0.16);
 }
 
 .brand-header h1 {
-    color: white !important;
+    color: #FFFFFF !important;
     font-size: 29px !important;
     font-weight: 750 !important;
     margin: 0 !important;
 }
 
 .brand-header p {
-    color: #E9DCE0 !important;
+    color: #DCFCE7 !important;
     font-size: 11px;
     margin: 5px 0 0 2px;
     letter-spacing: 1.4px;
@@ -95,20 +102,20 @@ h3 {
 /* HEADER TAG */
 
 .header-tag {
-    background: #78834B;
-    color: white;
+    background: #FBBF24;
+    color: #064E3B;
     border-radius: 10px;
     padding: 15px 7px;
     text-align: center;
     margin-top: 3px;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 750;
 }
 
 /* NAVIGATION */
 
 .nav-caption {
-    color: #78834B;
+    color: #059669;
     font-size: 11px;
     font-weight: 750;
     letter-spacing: 1.4px;
@@ -123,35 +130,35 @@ div[data-testid="stRadio"] > div[role="radiogroup"] {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    background: white;
+    background: #FFFFFF;
     padding: 8px;
     border-radius: 11px;
-    border: 1px solid #E5DED3;
+    border: 1px solid #D1E7D5;
     width: 100%;
 }
 
 div[data-testid="stRadio"] label {
-    background: #F4F0E8;
-    border: 1px solid #E5DED3;
+    background: #F0FDF4;
+    border: 1px solid #D1E7D5;
     border-radius: 9px;
     padding: 8px 13px;
     transition: all 0.2s ease;
 }
 
 div[data-testid="stRadio"] label:hover {
-    background: #E6E8D9;
-    border-color: #78834B;
+    background: #DCFCE7;
+    border-color: #059669;
 }
 
 div[data-testid="stRadio"] label:has(input:checked) {
-    background: #78834B;
-    border-color: #78834B;
-    color: white !important;
+    background: #059669;
+    border-color: #059669;
+    color: #FFFFFF !important;
     font-weight: 700;
 }
 
 div[data-testid="stRadio"] label:has(input:checked) p {
-    color: white !important;
+    color: #FFFFFF !important;
 }
 
 div[data-testid="stRadio"] label p {
@@ -161,23 +168,23 @@ div[data-testid="stRadio"] label p {
 /* KPI CARDS */
 
 [data-testid="stMetric"] {
-    background: white;
-    border: 1px solid #E9E2D9;
-    border-left: 5px solid #78834B;
+    background: #FFFFFF;
+    border: 1px solid #DCEBDD;
+    border-left: 5px solid #059669;
     padding: 14px 17px;
     border-radius: 10px;
     min-height: 105px;
-    box-shadow: 0 2px 7px rgba(0,0,0,0.035);
+    box-shadow: 0 3px 8px rgba(6,78,59,0.05);
 }
 
 [data-testid="stMetricLabel"] {
-    color: #66575A !important;
+    color: #466456 !important;
     font-size: 13px !important;
     font-weight: 600 !important;
 }
 
 [data-testid="stMetricValue"] {
-    color: #702F3B !important;
+    color: #064E3B !important;
     font-size: 24px !important;
     font-weight: 750 !important;
 }
@@ -186,103 +193,110 @@ div[data-testid="stRadio"] label p {
 
 div[data-baseweb="select"] > div {
     border-radius: 8px;
-    border-color: #D9D0C5;
+    border-color: #B7D7BF;
 }
 
 /* BUTTONS */
 
 .stButton button {
-    background-color: #702F3B;
-    color: white;
+    background-color: #059669;
+    color: #FFFFFF;
     border-radius: 8px;
     border: none;
+    font-weight: 600;
 }
 
 .stButton button:hover {
-    background-color: #78834B;
-    color: white;
+    background-color: #064E3B;
+    color: #FFFFFF;
 }
 
 /* INTERPRETATION CARDS */
 
 .interpretation-card {
-    background: white;
-    border-left: 5px solid #78834B;
+    background: #FFFFFF;
+    border-left: 5px solid #FBBF24;
     border-radius: 9px;
     padding: 14px 17px;
     margin: 8px 0 13px 0;
-    box-shadow: 0 2px 7px rgba(0,0,0,0.035);
+    box-shadow: 0 3px 8px rgba(6,78,59,0.05);
 }
 
 .interpretation-card h4 {
-    color: #702F3B;
+    color: #064E3B;
     margin: 0 0 7px 0;
     font-size: 15px;
 }
 
 .interpretation-card p {
-    color: #403A38;
+    color: #355344;
     font-size: 13px;
     line-height: 1.65;
     margin: 0;
 }
 
-/* SECTION LABEL */
-
-.section-label {
-    color: #78834B;
-    font-size: 11px;
-    font-weight: 750;
-    letter-spacing: 1.4px;
-    margin-bottom: 3px;
-}
-
 /* OBJECTIVE CARDS */
 
 .objective-card {
-    background: white;
-    border-top: 4px solid #78834B;
+    background: #FFFFFF;
+    border-top: 4px solid #059669;
     border-radius: 10px;
     padding: 17px;
     min-height: 180px;
-    box-shadow: 0 2px 7px rgba(0,0,0,0.035);
+    box-shadow: 0 3px 8px rgba(6,78,59,0.05);
 }
 
 .objective-card h4 {
-    color: #702F3B;
+    color: #064E3B;
     margin-top: 0;
     font-size: 16px;
 }
 
 .objective-card p {
     font-size: 13px;
-    color: #514A46;
+    color: #466456;
     line-height: 1.6;
 }
 
 .objective-card small {
-    color: #78834B;
-    font-weight: 700;
+    color: #B7791F;
+    font-weight: 750;
     font-size: 10px;
     letter-spacing: 0.7px;
+}
+
+/* SECTION LABEL */
+
+.section-label {
+    color: #059669;
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: 1.4px;
+    margin-bottom: 3px;
 }
 
 /* DIVIDER */
 
 hr {
-    border-color: #D9D0C5 !important;
+    border-color: #CDE5D1 !important;
     margin-top: 0.7rem;
     margin-bottom: 0.7rem;
+}
+
+/* CAPTIONS */
+
+[data-testid="stCaptionContainer"] {
+    color: #647C6B;
 }
 
 /* FOOTER */
 
 .footer {
     text-align: center;
-    color: #74675C;
+    color: #647C6B;
     padding: 17px 5px;
     font-size: 12px;
-    border-top: 1px solid #D9D0C5;
+    border-top: 1px solid #CDE5D1;
     margin-top: 25px;
 }
 
@@ -314,6 +328,7 @@ def load_data():
     ]
 
     for col in numeric_columns:
+
         data[col] = pd.to_numeric(
             data[col],
             errors="coerce"
@@ -365,6 +380,7 @@ categories = sorted(
 latest_year = max(years)
 
 if overall_df.empty:
+
     st.error("Overall CPI data is missing.")
     st.stop()
 
@@ -552,7 +568,10 @@ if page == "Overview":
 
     # TWO-COLUMN OVERVIEW
 
-    left, right = st.columns([1.15, 1], gap="large")
+    left, right = st.columns(
+        [1.15, 1],
+        gap="large"
+    )
 
     with left:
 
@@ -773,8 +792,14 @@ elif page == "Income & Price":
             y=line_data["income_growth"],
             mode="lines+markers",
             name="Income Growth",
-            line=dict(color=MAROON, width=3),
-            marker=dict(size=9),
+            line=dict(
+                color="#059669",
+                width=3
+            ),
+            marker=dict(
+                size=9,
+                color="#059669"
+            ),
             hovertemplate=(
                 "Year: %{x}<br>"
                 "Income Growth: %{y:.2f}%"
@@ -789,8 +814,14 @@ elif page == "Income & Price":
             y=line_data["price_growth"],
             mode="lines+markers",
             name="CPI Growth",
-            line=dict(color=OLIVE, width=3),
-            marker=dict(size=9),
+            line=dict(
+                color="#D69E00",
+                width=3
+            ),
+            marker=dict(
+                size=9,
+                color="#FBBF24"
+            ),
             hovertemplate=(
                 "Year: %{x}<br>"
                 "CPI Growth: %{y:.2f}%"
@@ -1003,7 +1034,7 @@ elif page == "State Comparison":
                 ],
                 mode="lines",
                 line=dict(
-                    color=MUTED,
+                    color="#B8CBB9",
                     width=2.5
                 ),
                 showlegend=False,
@@ -1029,9 +1060,12 @@ elif page == "State Comparison":
             mode="markers",
             name="Mean Income",
             marker=dict(
-                color=MAROON,
+                color="#059669",
                 size=bubble_sizes,
-                line=dict(color=WHITE, width=1)
+                line=dict(
+                    color=WHITE,
+                    width=1
+                )
             ),
             customdata=np.column_stack([
                 dumbbell_data["income_mean"],
@@ -1056,9 +1090,12 @@ elif page == "State Comparison":
             mode="markers",
             name="Overall CPI",
             marker=dict(
-                color=OLIVE,
+                color="#FBBF24",
                 size=bubble_sizes,
-                line=dict(color=WHITE, width=1)
+                line=dict(
+                    color=WHITE,
+                    width=1
+                )
             ),
             customdata=np.column_stack([
                 dumbbell_data["index"],
@@ -1089,7 +1126,7 @@ elif page == "State Comparison":
     fig.update_xaxes(
         range=[-5, 105],
         showgrid=True,
-        gridcolor="#EAE5DE"
+        gridcolor="#E5EEE6"
     )
 
     fig = chart_layout(fig, height=680)
@@ -1286,10 +1323,12 @@ elif page == "CPI Heatmap":
         text_auto=".1f",
         aspect="auto",
         color_continuous_scale=[
-            "#FFF4C2",
-            "#F9A03F",
-            "#D1493F",
-            "#8F001A"
+            "#F0FDF4",
+            "#BBF7D0",
+            "#84CC16",
+            "#FBBF24",
+            "#F97316",
+            "#B91C1C"
         ],
         labels=dict(
             x="Spending Categories",
@@ -1364,7 +1403,7 @@ elif page == "CPI Heatmap":
 
 st.markdown("""
 <div class="footer">
-    <b style="color:#702F3B;">
+    <b style="color:#064E3B;">
         Cost of Living Analytics
     </b>
     <br>
