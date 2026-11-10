@@ -4,7 +4,6 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 import plotly.express as px
-from plotly.subplots import make_subplots
 
 # =====================================================
 # 1. PAGE CONFIGURATION
@@ -18,7 +17,7 @@ st.set_page_config(
 )
 
 # =====================================================
-# 2. COLOUR PALETTE
+# 2. COLOUR THEME
 # =====================================================
 
 MAROON = "#702F3B"
@@ -44,12 +43,14 @@ st.markdown("""
 }
 
 .block-container {
-    padding-top: 1rem;
-    padding-bottom: 2rem;
-    max-width: 1450px;
+    padding-top: 0.6rem;
+    padding-bottom: 1.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: 1550px;
 }
 
-/* GENERAL HEADINGS */
+/* HEADINGS */
 
 h1, h2, h3 {
     color: #49252E !important;
@@ -60,36 +61,35 @@ h1 {
 }
 
 h2 {
-    font-size: 25px !important;
+    font-size: 24px !important;
 }
 
 h3 {
-    font-size: 19px !important;
+    font-size: 18px !important;
 }
 
-/* BRAND HEADER */
+/* HEADER */
 
 .brand-header {
     background: linear-gradient(110deg, #49252E, #702F3B);
-    padding: 22px 26px;
-    border-radius: 13px;
-    margin-bottom: 12px;
+    padding: 15px 24px;
+    border-radius: 12px;
+    margin-bottom: 5px;
     box-shadow: 0 3px 10px rgba(73,37,46,0.12);
 }
 
 .brand-header h1 {
-    color: #FFFFFF !important;
-    font-size: 30px !important;
+    color: white !important;
+    font-size: 29px !important;
     font-weight: 750 !important;
     margin: 0 !important;
-    letter-spacing: 0.3px;
 }
 
 .brand-header p {
     color: #E9DCE0 !important;
-    font-size: 12px;
+    font-size: 11px;
     margin: 5px 0 0 2px;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.4px;
 }
 
 /* HEADER TAG */
@@ -97,10 +97,10 @@ h3 {
 .header-tag {
     background: #78834B;
     color: white;
-    border-radius: 11px;
-    padding: 17px 8px;
+    border-radius: 10px;
+    padding: 15px 7px;
     text-align: center;
-    margin-top: 4px;
+    margin-top: 3px;
     font-size: 12px;
     font-weight: 700;
 }
@@ -111,8 +111,12 @@ h3 {
     color: #78834B;
     font-size: 11px;
     font-weight: 750;
-    letter-spacing: 1.5px;
-    margin: 14px 0 6px 3px;
+    letter-spacing: 1.4px;
+    margin: 8px 0 4px 3px;
+}
+
+div[data-testid="stRadio"] {
+    margin-bottom: 0;
 }
 
 div[data-testid="stRadio"] > div[role="radiogroup"] {
@@ -121,7 +125,7 @@ div[data-testid="stRadio"] > div[role="radiogroup"] {
     gap: 8px;
     background: white;
     padding: 8px;
-    border-radius: 12px;
+    border-radius: 11px;
     border: 1px solid #E5DED3;
     width: 100%;
 }
@@ -130,7 +134,7 @@ div[data-testid="stRadio"] label {
     background: #F4F0E8;
     border: 1px solid #E5DED3;
     border-radius: 9px;
-    padding: 9px 15px;
+    padding: 8px 13px;
     transition: all 0.2s ease;
 }
 
@@ -157,12 +161,12 @@ div[data-testid="stRadio"] label p {
 /* KPI CARDS */
 
 [data-testid="stMetric"] {
-    background: #FFFFFF;
+    background: white;
     border: 1px solid #E9E2D9;
     border-left: 5px solid #78834B;
-    padding: 16px 18px;
-    border-radius: 11px;
-    min-height: 112px;
+    padding: 14px 17px;
+    border-radius: 10px;
+    min-height: 105px;
     box-shadow: 0 2px 7px rgba(0,0,0,0.035);
 }
 
@@ -174,7 +178,7 @@ div[data-testid="stRadio"] label p {
 
 [data-testid="stMetricValue"] {
     color: #702F3B !important;
-    font-size: 25px !important;
+    font-size: 24px !important;
     font-weight: 750 !important;
 }
 
@@ -199,33 +203,27 @@ div[data-baseweb="select"] > div {
     color: white;
 }
 
-/* INFO BOXES */
-
-div[data-testid="stAlert"] {
-    border-radius: 10px;
-}
-
-/* INTERPRETATION CARD */
+/* INTERPRETATION CARDS */
 
 .interpretation-card {
-    background: #FFFFFF;
+    background: white;
     border-left: 5px solid #78834B;
-    border-radius: 10px;
-    padding: 17px 20px;
-    margin: 10px 0 18px 0;
+    border-radius: 9px;
+    padding: 14px 17px;
+    margin: 8px 0 13px 0;
     box-shadow: 0 2px 7px rgba(0,0,0,0.035);
 }
 
 .interpretation-card h4 {
     color: #702F3B;
-    margin: 0 0 8px 0;
-    font-size: 16px;
+    margin: 0 0 7px 0;
+    font-size: 15px;
 }
 
 .interpretation-card p {
     color: #403A38;
-    font-size: 14px;
-    line-height: 1.7;
+    font-size: 13px;
+    line-height: 1.65;
     margin: 0;
 }
 
@@ -236,7 +234,45 @@ div[data-testid="stAlert"] {
     font-size: 11px;
     font-weight: 750;
     letter-spacing: 1.4px;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
+}
+
+/* OBJECTIVE CARDS */
+
+.objective-card {
+    background: white;
+    border-top: 4px solid #78834B;
+    border-radius: 10px;
+    padding: 17px;
+    min-height: 180px;
+    box-shadow: 0 2px 7px rgba(0,0,0,0.035);
+}
+
+.objective-card h4 {
+    color: #702F3B;
+    margin-top: 0;
+    font-size: 16px;
+}
+
+.objective-card p {
+    font-size: 13px;
+    color: #514A46;
+    line-height: 1.6;
+}
+
+.objective-card small {
+    color: #78834B;
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.7px;
+}
+
+/* DIVIDER */
+
+hr {
+    border-color: #D9D0C5 !important;
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
 }
 
 /* FOOTER */
@@ -244,16 +280,10 @@ div[data-testid="stAlert"] {
 .footer {
     text-align: center;
     color: #74675C;
-    padding: 18px 5px;
+    padding: 17px 5px;
     font-size: 12px;
     border-top: 1px solid #D9D0C5;
-    margin-top: 30px;
-}
-
-/* DIVIDER */
-
-hr {
-    border-color: #D9D0C5 !important;
+    margin-top: 25px;
 }
 
 </style>
@@ -285,7 +315,8 @@ def load_data():
 
     for col in numeric_columns:
         data[col] = pd.to_numeric(
-            data[col], errors="coerce"
+            data[col],
+            errors="coerce"
         )
 
     data = data.dropna(subset=numeric_columns)
@@ -294,17 +325,19 @@ def load_data():
 
 
 try:
+
     df = load_data()
 
 except FileNotFoundError:
+
     st.error(
-        "Dataset not found. Please ensure "
-        "merged_dataset.csv is in the same GitHub "
-        "repository as app.py."
+        "Dataset not found. Please upload "
+        "merged_dataset.csv into the same GitHub repository."
     )
     st.stop()
 
 except Exception as e:
+
     st.error(f"Unable to load dataset: {e}")
     st.stop()
 
@@ -375,6 +408,7 @@ def scale_100(series):
     maximum = series.max()
 
     if maximum == minimum:
+
         return pd.Series(
             50,
             index=series.index
@@ -386,7 +420,15 @@ def scale_100(series):
     ) * 100
 
 
-def make_chart_layout(fig, height=520):
+def format_correlation(value):
+
+    if pd.isna(value):
+        return "N/A"
+
+    return f"{value:.3f}"
+
+
+def chart_layout(fig, height=520):
 
     fig.update_layout(
         template="plotly_white",
@@ -414,7 +456,7 @@ def make_chart_layout(fig, height=520):
 
 
 # =====================================================
-# 7. TOP BRAND HEADER
+# 7. BRAND HEADER
 # =====================================================
 
 header_col1, header_col2 = st.columns([5, 1])
@@ -432,7 +474,7 @@ with header_col2:
 
     st.markdown("""
     <div class="header-tag">
-        <div style="font-size:23px;">📊</div>
+        <div style="font-size:22px;">📊</div>
         <div>2024 DATA</div>
     </div>
     """, unsafe_allow_html=True)
@@ -476,13 +518,12 @@ if page == "Overview":
     st.title("Malaysia Cost of Living Overview")
 
     st.write(
-        "Explore household income, population and consumer "
-        "price index (CPI) across Malaysian states. This "
-        "dashboard provides insights into income growth, "
-        "state-level differences and spending categories."
+        "Explore population, household income and consumer "
+        "price index across Malaysian states to understand "
+        "changes in affordability and cost of living."
     )
 
-    # SUMMARY CARDS
+    # KPI SUMMARY
 
     show_kpis([
         (
@@ -492,8 +533,8 @@ if page == "Overview":
         ),
         (
             "Observation Years",
-            df["year"].nunique(),
-            f"{min(years)} – {max(years)}"
+            f"{min(years)}–{max(years)}",
+            f"{len(years)} available years"
         ),
         (
             "Spending Categories",
@@ -509,100 +550,126 @@ if page == "Overview":
 
     st.markdown("---")
 
-    # DATASET INFORMATION
+    # TWO-COLUMN OVERVIEW
 
-    st.subheader("About the Dataset")
+    left, right = st.columns([1.15, 1], gap="large")
 
-    st.write(
-        "The dataset combines Malaysian state-level "
-        "population, household income and consumer "
-        "price index information."
-    )
+    with left:
 
-    info_col1, info_col2 = st.columns(2)
+        st.subheader("About This Dashboard")
 
-    with info_col1:
+        st.write(
+            "This dashboard analyses Malaysian state-level "
+            "population, household income and Consumer Price "
+            "Index (CPI) data."
+        )
 
-        st.markdown("#### Dataset Variables")
+        st.markdown("#### Main Areas of Analysis")
 
         st.markdown("""
-        - **State:** Malaysian states
-        - **Year:** Observation year
-        - **Population:** State population
-        - **Mean Income:** Average household income
-        - **Median Income:** Median household income
-        - **Division:** Consumer spending category
-        - **Index:** Consumer Price Index (CPI)
+        - Income growth compared with price growth.
+        - Population, income and CPI relationships.
+        - CPI differences across spending categories.
         """)
 
-    with info_col2:
-
-        st.markdown("#### Dataset Coverage")
+        st.markdown("#### Dataset Information")
 
         st.markdown(f"""
-        - Total records: **{len(df):,}**
-        - States: **{df['state'].nunique()}**
-        - Observation years: **{min(years)}–{max(years)}**
-        - CPI categories including Overall: **{df['division'].nunique()}**
-        - Individual spending categories: **{category_df['division'].nunique()}**
+        - **Coverage:** {len(states)} states and territories
+        - **Period:** {min(years)}–{max(years)}
+        - **Latest observation:** {latest_year}
+        - **Individual CPI categories:** {len(categories)}
+        - **Total observations:** {len(df):,}
         """)
+
+    with right:
+
+        st.subheader("Analysis Highlights")
+
+        latest_overall = overall_df[
+            overall_df["year"] == latest_year
+        ]
+
+        highest_income = latest_overall.loc[
+            latest_overall["income_mean"].idxmax()
+        ]
+
+        highest_population = latest_overall.loc[
+            latest_overall["population"].idxmax()
+        ]
+
+        highest_cpi = latest_overall.loc[
+            latest_overall["index"].idxmax()
+        ]
+
+        st.markdown(f"""
+        <div class="interpretation-card">
+            <h4>💰 Highest Mean Household Income</h4>
+            <p><b>{highest_income['state']}</b><br>
+            RM {highest_income['income_mean']:,.0f}</p>
+        </div>
+
+        <div class="interpretation-card">
+            <h4>👥 Highest Population</h4>
+            <p><b>{highest_population['state']}</b><br>
+            {highest_population['population']:,.1f} thousand</p>
+        </div>
+
+        <div class="interpretation-card">
+            <h4>📈 Highest Overall CPI</h4>
+            <p><b>{highest_cpi['state']}</b><br>
+            CPI Index: {highest_cpi['index']:.1f}</p>
+        </div>
+        """, unsafe_allow_html=True)
 
     st.markdown("---")
 
     # OBJECTIVES
 
-    st.subheader("Visualization Objectives")
+    st.subheader("Explore the Analysis")
 
-    obj1, obj2, obj3 = st.columns(3)
-
-    with obj1:
-
-        st.markdown("### 📈 Objective 1")
-
-        st.markdown("**Income vs Price Growth**")
-
-        st.write(
-            "Compare household income growth and CPI "
-            "growth across Malaysian states from 2012 "
-            "to 2024."
-        )
-
-        st.caption("Visualization: Line Chart")
-
-    with obj2:
-
-        st.markdown("### 📊 Objective 2")
-
-        st.markdown("**Population, Income & CPI**")
-
-        st.write(
-            "Examine the relationship between population "
-            "size, household income and CPI across states."
-        )
-
-        st.caption("Visualization: Dumbbell Chart")
-
-    with obj3:
-
-        st.markdown("### 🔥 Objective 3")
-
-        st.markdown("**Spending Categories**")
-
-        st.write(
-            "Compare consumer price index values across "
-            "major spending categories among Malaysian states."
-        )
-
-        st.caption("Visualization: Heatmap")
-
-    st.markdown("---")
-
-    st.subheader("Explore the Dashboard")
-
-    st.info(
-        "Use the navigation bar above to explore the "
-        "three interactive visualization pages."
+    st.write(
+        "Three visualizations are designed to address "
+        "the main objectives of this study."
     )
+
+    c1, c2, c3 = st.columns(3, gap="medium")
+
+    with c1:
+
+        st.markdown("""
+        <div class="objective-card">
+            <h4>📈 Objective 1</h4>
+            <b>Income vs Price Growth</b>
+            <p>Compare income growth and CPI growth
+            to examine changes in affordability.</p>
+            <small>LINE CHART · TREND ANALYSIS</small>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with c2:
+
+        st.markdown("""
+        <div class="objective-card">
+            <h4>📊 Objective 2</h4>
+            <b>Population, Income & CPI</b>
+            <p>Examine the relationship between population,
+            household income and consumer prices.</p>
+            <small>DUMBBELL CHART · STATE COMPARISON</small>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with c3:
+
+        st.markdown("""
+        <div class="objective-card">
+            <h4>🔥 Objective 3</h4>
+            <b>Spending Category Comparison</b>
+            <p>Identify differences in CPI across food,
+            housing, transport and other categories.</p>
+            <small>HEATMAP · CATEGORY ANALYSIS</small>
+        </div>
+        """, unsafe_allow_html=True)
 
 
 # =====================================================
@@ -645,7 +712,7 @@ elif page == "Income & Price":
         ["state", "year"]
     )
 
-    # CALCULATE GROWTH USING FIRST OBSERVATION
+    # GROWTH CALCULATIONS
 
     filtered["income_growth"] = (
         filtered["income_mean"] /
@@ -663,8 +730,6 @@ elif page == "Income & Price":
         filtered["income_growth"] -
         filtered["price_growth"]
     )
-
-    # AVERAGE ACROSS SELECTED STATES
 
     line_data = filtered.groupby("year")[
         ["income_growth", "price_growth"]
@@ -708,10 +773,7 @@ elif page == "Income & Price":
             y=line_data["income_growth"],
             mode="lines+markers",
             name="Income Growth",
-            line=dict(
-                color=MAROON,
-                width=3
-            ),
+            line=dict(color=MAROON, width=3),
             marker=dict(size=9),
             hovertemplate=(
                 "Year: %{x}<br>"
@@ -727,10 +789,7 @@ elif page == "Income & Price":
             y=line_data["price_growth"],
             mode="lines+markers",
             name="CPI Growth",
-            line=dict(
-                color=OLIVE,
-                width=3
-            ),
+            line=dict(color=OLIVE, width=3),
             marker=dict(size=9),
             hovertemplate=(
                 "Year: %{x}<br>"
@@ -753,7 +812,7 @@ elif page == "Income & Price":
         tickvals=line_data["year"]
     )
 
-    fig = make_chart_layout(fig)
+    fig = chart_layout(fig)
 
     st.plotly_chart(
         fig,
@@ -774,22 +833,21 @@ elif page == "Income & Price":
     if avg_gap > 0:
 
         show_interpretation(
-            "Income growth is higher than CPI growth",
-            f"By {int(line_data['year'].iloc[-1])}, average "
-            f"income growth was {avg_income:.2f}%, compared "
-            f"with CPI growth of {avg_cpi:.2f}%. The difference "
-            f"was {avg_gap:.2f} percentage points. This suggests "
-            "that household income increased faster than the "
-            "overall price index in the selected states."
+            "Income growth exceeds CPI growth",
+            f"Average income growth was {avg_income:.2f}%, "
+            f"compared with CPI growth of {avg_cpi:.2f}%. "
+            f"The difference was {avg_gap:.2f} percentage "
+            "points. This suggests income increased faster "
+            "than consumer prices in the selected states."
         )
 
     elif avg_gap < 0:
 
         show_interpretation(
-            "CPI growth is higher than income growth",
+            "CPI growth exceeds income growth",
             f"CPI growth exceeded income growth by "
-            f"{abs(avg_gap):.2f} percentage points. This "
-            "suggests greater relative affordability pressure."
+            f"{abs(avg_gap):.2f} percentage points. "
+            "This suggests greater relative affordability pressure."
         )
 
     else:
@@ -845,7 +903,7 @@ elif page == "State Comparison":
         st.warning("No data available for the selected year.")
         st.stop()
 
-    # NORMALIZE DATA
+    # NORMALIZE VALUES
 
     dumbbell_data["income_scaled"] = scale_100(
         dumbbell_data["income_mean"]
@@ -873,7 +931,7 @@ elif page == "State Comparison":
         dumbbell_data["index"].idxmax()
     ]
 
-    # CORRELATIONS
+    # CORRELATION
 
     population_income_corr = dumbbell_data[
         ["population", "income_mean"]
@@ -901,28 +959,26 @@ elif page == "State Comparison":
         )
     ])
 
-    # CORRELATION INFORMATION
+    corr1, corr2 = st.columns(2)
 
-    corr_col1, corr_col2 = st.columns(2)
-
-    with corr_col1:
+    with corr1:
 
         st.metric(
             "Population–Income Correlation",
-            f"{population_income_corr:.3f}"
+            format_correlation(population_income_corr)
         )
 
-    with corr_col2:
+    with corr2:
 
         st.metric(
             "Population–CPI Correlation",
-            f"{population_cpi_corr:.3f}"
+            format_correlation(population_cpi_corr)
         )
 
     st.caption(
         "Correlation coefficients are calculated across "
-        "the 16 states for the selected year. They describe "
-        "association, not causation."
+        "the states for the selected year. Correlation "
+        "does not establish causation."
     )
 
     st.markdown("---")
@@ -955,7 +1011,7 @@ elif page == "State Comparison":
             )
         )
 
-    # BUBBLE SIZE
+    # POPULATION BUBBLE SIZE
 
     max_population = dumbbell_data["population"].max()
 
@@ -964,7 +1020,7 @@ elif page == "State Comparison":
         max_population * 25 + 8
     )
 
-    # INCOME POINTS
+    # INCOME
 
     fig.add_trace(
         go.Scatter(
@@ -975,11 +1031,7 @@ elif page == "State Comparison":
             marker=dict(
                 color=MAROON,
                 size=bubble_sizes,
-                sizemode="diameter",
-                line=dict(
-                    color=WHITE,
-                    width=1
-                )
+                line=dict(color=WHITE, width=1)
             ),
             customdata=np.column_stack([
                 dumbbell_data["income_mean"],
@@ -995,7 +1047,7 @@ elif page == "State Comparison":
         )
     )
 
-    # CPI POINTS
+    # CPI
 
     fig.add_trace(
         go.Scatter(
@@ -1006,11 +1058,7 @@ elif page == "State Comparison":
             marker=dict(
                 color=OLIVE,
                 size=bubble_sizes,
-                sizemode="diameter",
-                line=dict(
-                    color=WHITE,
-                    width=1
-                )
+                line=dict(color=WHITE, width=1)
             ),
             customdata=np.column_stack([
                 dumbbell_data["index"],
@@ -1044,7 +1092,7 @@ elif page == "State Comparison":
         gridcolor="#EAE5DE"
     )
 
-    fig = make_chart_layout(fig, height=680)
+    fig = chart_layout(fig, height=680)
 
     st.plotly_chart(
         fig,
@@ -1053,53 +1101,62 @@ elif page == "State Comparison":
 
     st.caption(
         "Note: Income and CPI are independently standardized "
-        "to 0–100. Bubble size represents population in thousands. "
-        "The two standardized values have different original units."
+        "to 0–100. Bubble size represents population in thousands."
     )
 
     # INTERPRETATION
 
     st.subheader("Interpretation")
 
-    if population_income_corr > 0:
+    if pd.isna(population_income_corr):
 
         income_message = (
-            "A positive relationship was observed between "
-            "population and mean household income."
+            "The population–income correlation could not be calculated."
+        )
+
+    elif population_income_corr > 0:
+
+        income_message = (
+            "Population and mean household income showed "
+            "a positive association."
         )
 
     elif population_income_corr < 0:
 
         income_message = (
-            "A negative relationship was observed between "
-            "population and mean household income."
+            "Population and mean household income showed "
+            "a negative association."
         )
 
     else:
 
         income_message = (
-            "There was no linear relationship between "
+            "No linear association was observed between "
             "population and mean household income."
         )
 
-    if population_cpi_corr > 0:
+    if pd.isna(population_cpi_corr):
 
         cpi_message = (
-            "Population and overall CPI also showed a positive "
-            "relationship."
+            "The population–CPI correlation could not be calculated."
+        )
+
+    elif population_cpi_corr > 0:
+
+        cpi_message = (
+            "Population and overall CPI showed a positive association."
         )
 
     elif population_cpi_corr < 0:
 
         cpi_message = (
-            "Population and overall CPI showed a negative "
-            "relationship."
+            "Population and overall CPI showed a negative association."
         )
 
     else:
 
         cpi_message = (
-            "No linear relationship was observed between "
+            "No linear association was observed between "
             "population and overall CPI."
         )
 
@@ -1182,7 +1239,7 @@ elif page == "CPI Heatmap":
         values="index"
     )
 
-    # SUMMARY CALCULATIONS
+    # SUMMARY VALUES
 
     category_avg = heatmap_data.groupby(
         "division"
@@ -1193,11 +1250,9 @@ elif page == "CPI Heatmap":
     )["index"].mean()
 
     highest_category = category_avg.idxmax()
-
     highest_category_value = category_avg.max()
 
     highest_state = state_avg.idxmax()
-
     highest_state_value = state_avg.max()
 
     overall_avg = heatmap_data["index"].mean()
@@ -1268,7 +1323,7 @@ elif page == "CPI Heatmap":
         autorange="reversed"
     )
 
-    fig = make_chart_layout(fig, height=720)
+    fig = chart_layout(fig, height=720)
 
     st.plotly_chart(
         fig,
@@ -1278,7 +1333,7 @@ elif page == "CPI Heatmap":
     st.caption(
         "Note: Overall CPI is excluded. The heatmap shows "
         "individual spending category index values. "
-        "Higher CPI index values do not directly measure "
+        "Higher index values do not directly measure "
         "each category's contribution to inflation."
     )
 
@@ -1309,7 +1364,9 @@ elif page == "CPI Heatmap":
 
 st.markdown("""
 <div class="footer">
-    <b style="color:#702F3B;">Cost of Living Analytics</b>
+    <b style="color:#702F3B;">
+        Cost of Living Analytics
+    </b>
     <br>
     Malaysia State-Level Visualization Project
     <br>
